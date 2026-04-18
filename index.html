@@ -3,163 +3,193 @@
 <head>
   <title>05-STAR</title>
 
-  <!-- ICONOS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Arial;
-      background: black;
+      background: #0a0a0f;
       color: white;
-      overflow-x: hidden;
     }
 
-    /* PARTICULAS */
-    #particles-js {
+    /* NAVBAR */
+    nav {
       position: fixed;
       width: 100%;
-      height: 100%;
-      z-index: -1;
+      top: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 40px;
+      backdrop-filter: blur(10px);
+      z-index: 1000;
     }
 
-    /* CONTENIDO */
-    .container {
-      text-align: center;
-      padding: 50px 20px;
+    nav h2 {
+      color: #a855f7;
+      margin: 0;
     }
 
-    img {
-      width: 220px;
-      filter: drop-shadow(0 0 30px white);
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: 0.3s;
     }
 
-    /* TEXTO NEON */
-    h1 {
+    nav a:hover {
+      color: #a855f7;
+    }
+
+    section {
+      padding: 120px 40px;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero h1 {
       font-size: 50px;
-      color: #fff;
-      text-shadow:
-        0 0 5px #fff,
-        0 0 10px #a855f7,
-        0 0 20px #a855f7,
-        0 0 40px #a855f7;
-      margin: 20px 0;
+      color: #a855f7;
     }
 
-    .descripcion {
-      max-width: 600px;
-      margin: auto;
+    .hero p {
       color: #ccc;
-      font-size: 18px;
+    }
+
+    .hero img {
+      width: 250px;
+      filter: drop-shadow(0 0 20px #a855f7);
     }
 
     /* BOTONES */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 25px;
-      margin: 15px;
-      border-radius: 12px;
+      display: inline-block;
+      padding: 12px 22px;
+      margin-top: 15px;
+      margin-right: 10px;
+      border-radius: 8px;
       text-decoration: none;
       color: white;
-      font-size: 18px;
-      font-weight: bold;
+      border: 1px solid #a855f7;
       transition: 0.3s;
     }
 
-    .discord { background: #5865F2; }
-    .whatsapp { background: #25D366; }
-
     .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px white;
+      background: #a855f7;
     }
 
-    /* SECCIONES */
-    .section {
-      padding: 80px 20px;
+    /* SERVICIOS */
+    .services {
       text-align: center;
     }
 
-    .section h2 {
-      font-size: 35px;
-      color: #a855f7;
-      margin-bottom: 20px;
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .card {
-      background: rgba(255,255,255,0.05);
-      border-radius: 15px;
-      padding: 20px;
-      margin: 10px;
-      display: inline-block;
+      background: #111;
+      margin: 15px;
+      padding: 25px;
+      border-radius: 12px;
       width: 250px;
-      backdrop-filter: blur(10px);
+      transition: 0.3s;
     }
 
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #a855f7;
+    }
+
+    /* CONTACTO */
+    .contact {
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: black;
+      color: #777;
+    }
   </style>
 </head>
 
 <body>
 
-<!-- PARTICULAS -->
-<div id="particles-js"></div>
+<nav>
+  <h2>05-STAR</h2>
+  <div>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
 
 <!-- INICIO -->
-<div class="container">
+<section id="inicio" class="hero">
+  <div class="hero-text">
+    <h1>Impulsamos tu comunidad 🚀</h1>
+    <p>
+      05-STAR es una comunidad enfocada en gaming, proyectos digitales
+      y crecimiento online.
+    </p>
+
+    <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
+      <i class="fab fa-discord"></i> Discord
+    </a>
+
+    <a class="btn" href="https://wa.me/573234950793" target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
+
   <img src="up.png">
-  <h1>05-STAR</h1>
+</section>
 
-  <p class="descripcion">
-    Bienvenido a 05-STAR 🔥 Aquí te puedes unir a los eventos desde el canal de discord de multiples juegos con premios o escribeme desde el whatsapp para 
-    unirte al grupo 😁
-  </p>
+<!-- SERVICIOS -->
+<section id="servicios" class="services">
+  <h2>Servicios</h2>
 
-  <br>
+  <div class="cards">
+    <div class="card">🎮 Comunidad Gaming</div>
+    <div class="card">💬 Gestión de grupos</div>
+    <div class="card">🚀 Proyectos digitales</div>
+  </div>
+</section>
 
-  <a class="btn discord" href="https://discord.gg/BfJUbKP4" target="_blank">
-    <i class="fab fa-discord"></i> Discord
+<!-- CONTACTO -->
+<section id="contacto" class="contact">
+  <h2>Contáctanos</h2>
+  <p>Únete a nuestra comunidad o escríbenos directamente.</p>
+
+  <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
+    Discord
   </a>
 
-  <a class="btn whatsapp" href="https://wa.me/573234950793" target="_blank">
-    <i class="fab fa-whatsapp"></i> WhatsApp
+  <a class="btn" href="https://wa.me/573234950793" target="_blank">
+    WhatsApp
   </a>
-</div>
+</section>
 
-<!-- SECCION 1 -->
-<div class="section">
-  <h2>🔥 Sobre Nosotros</h2>
-  <p>Soy Th1rt un Youtuber que empezo a diseñar una saga de eventos acompañado de tomx y otras personas.</p>
-</div>
-
-<!-- SECCION 2 -->
-<div class="section">
-  <h2>⚡ Qué hacemos</h2>
-
-  <div class="card">🎮 Gaming</div>
-  <div class="card">💬 Comunidad</div>
-  <div class="card">🚀 Proyectos</div>
-</div>
-
-<!-- SECCION 3 -->
-<div class="section">
-  <h2>📢 Únete</h2>
-  <p>Forma parte de la comunidad 05-STAR 😎</p>
-</div>
-
-<!-- SCRIPT PARTICULAS -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-<script>
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 80 },
-    size: { value: 3 },
-    move: { speed: 2 },
-    line_linked: { enable: true },
-  }
-});
-</script>
+<footer>
+  © 2026 05-STAR - Todos los derechos reservados
+</footer>
 
 </body>
 </html>
