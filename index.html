@@ -6,90 +6,49 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: Arial;
       background: #050505;
       color: white;
+      text-align: center;
     }
 
-    /* NAV */
-    nav {
+    #particles-js {
       position: fixed;
       width: 100%;
-      top: 0;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: space-between;
-      padding: 15px 40px;
-      backdrop-filter: blur(10px);
-      z-index: 1000;
+      height: 100%;
+      z-index: -1;
     }
 
-    nav h2 {
-      color: #a855f7;
-      margin: 0;
+    .container {
+      padding: 100px 20px;
     }
 
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #a855f7;
-    }
-
-    section {
-      padding: 120px 40px;
-    }
-
-    /* HERO */
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .hero-text {
-      max-width: 500px;
-    }
-
-    .hero h1 {
+    h1 {
       font-size: 55px;
       color: #a855f7;
-      text-shadow: 0 0 15px #a855f7;
+      text-shadow: 0 0 20px #a855f7;
     }
 
-    .hero p {
-      color: #ccc;
-    }
-
-    .hero img {
-      width: 260px;
-      filter: drop-shadow(0 0 25px #a855f7);
-      animation: float 3s ease-in-out infinite;
+    img {
+      width: 220px;
+      filter: drop-shadow(0 0 20px #a855f7);
+      animation: float 3s infinite;
     }
 
     @keyframes float {
       50% { transform: translateY(-10px); }
     }
 
-    /* BOTONES */
     .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      margin-top: 15px;
-      margin-right: 10px;
+      padding: 12px 20px;
+      margin: 10px;
       border-radius: 10px;
-      text-decoration: none;
-      color: white;
       border: 1px solid #a855f7;
+      background: transparent;
+      color: white;
+      cursor: pointer;
       transition: 0.3s;
     }
 
@@ -98,120 +57,142 @@
       box-shadow: 0 0 20px #a855f7;
     }
 
-    /* STATS */
-    .stats {
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      margin: 20px;
-      font-size: 25px;
-    }
-
-    .stat span {
-      color: #a855f7;
-      font-size: 35px;
-    }
-
-    /* CARDS */
-    .cards {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      background: #111;
-      margin: 15px;
-      padding: 25px;
+    /* PANEL DISCORD PRO */
+    .panel {
+      max-width: 400px;
+      margin: 30px auto;
+      background: #0f0f14;
       border-radius: 15px;
-      width: 250px;
+      padding: 20px;
+      box-shadow: 0 0 20px #a855f7;
+      display: none;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #1a1a22;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
       transition: 0.3s;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 20px #a855f7;
+    .user:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #a855f7;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: black;
-      color: #777;
+    .user img {
+      border-radius: 50%;
     }
+
+    .user span {
+      flex: 1;
+      margin-left: 10px;
+      text-align: left;
+    }
+
+    .online::after {
+      content: "🟢";
+    }
+
+    .offline::after {
+      content: "⚫";
+    }
+
   </style>
 </head>
 
 <body>
 
-<nav>
-  <h2>05-STAR</h2>
-  <div>
-    <a href="#inicio">Inicio</a>
-    <a href="#stats">Stats</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#contacto">Contacto</a>
-  </div>
-</nav>
+<div id="particles-js"></div>
 
-<!-- HERO -->
-<section id="inicio" class="hero">
-  <div class="hero-text">
-    <h1>Gaming Community 🔥</h1>
-    <p>Únete a 05-STAR y crece con nosotros en gaming y proyectos digitales.</p>
-
-    <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
-      <i class="fab fa-discord"></i> Discord
-    </a>
-
-    <a class="btn" href="https://wa.me/573234950793" target="_blank">
-      <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
-  </div>
+<div class="container">
 
   <img src="up.png">
-</section>
 
-<!-- STATS -->
-<section id="stats">
-  <div class="stats">
-    <div class="stat"><span>150+</span><br>Miembros</div>
-    <div class="stat"><span>24/7</span><br>Actividad</div>
-    <div class="stat"><span>100%</span><br>Gaming</div>
-  </div>
-</section>
+  <h1>05-STAR</h1>
 
-<!-- SERVICIOS -->
-<section id="servicios">
-  <h2 style="text-align:center;color:#a855f7;">Qué hacemos</h2>
+  <p>Comunidad gaming 🔥</p>
 
-  <div class="cards">
-    <div class="card">🎮 Juegos y eventos</div>
-    <div class="card">💬 Comunidad activa</div>
-    <div class="card">🚀 Proyectos digitales</div>
-  </div>
-</section>
-
-<!-- CONTACTO -->
-<section id="contacto" style="text-align:center;">
-  <h2 style="color:#a855f7;">Únete</h2>
+  <br>
 
   <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
-    Discord
+    <i class="fab fa-discord"></i> Discord
   </a>
 
-  <a class="btn" href="https://wa.me/573234950793" target="_blank">
-    WhatsApp
-  </a>
-</section>
+  <button class="btn" onclick="togglePanel()">
+    👥 Ver miembros
+  </button>
 
-<footer>
-  © 2026 05-STAR
-</footer>
+  <button class="btn" onclick="toggleMusic()">
+    🎧 Música
+  </button>
+
+  <!-- PANEL MIEMBROS -->
+  <div id="panel" class="panel">
+
+    <div class="user online">
+      <img src="https://i.pravatar.cc/40?img=1">
+      <span>Jose</span>
+    </div>
+
+    <div class="user online">
+      <img src="https://i.pravatar.cc/40?img=2">
+      <span>Samu</span>
+    </div>
+
+    <div class="user offline">
+      <img src="https://i.pravatar.cc/40?img=3">
+      <span>Iker</span>
+    </div>
+
+    <div class="user online">
+      <img src="https://i.pravatar.cc/40?img=4">
+      <span>Tomxx</span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="music">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio.mp3" type="audio/mp3">
+</audio>
+
+<!-- PARTICULAS -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    color: { value: "#a855f7" },
+    size: { value: 3 },
+    move: { speed: 1.5 },
+    line_linked: { enable: true, color: "#a855f7" }
+  }
+});
+
+// PANEL MIEMBROS
+function togglePanel() {
+  let panel = document.getElementById("panel");
+  panel.style.display = panel.style.display === "none" ? "block" : "none";
+}
+
+// MUSICA
+function toggleMusic() {
+  let music = document.getElementById("music");
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
+</script>
 
 </body>
 </html>
