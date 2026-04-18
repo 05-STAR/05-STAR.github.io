@@ -42,64 +42,24 @@
     }
 
     .btn {
-      padding: 12px 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 25px;
       margin: 10px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1px solid #a855f7;
-      background: transparent;
+      background: rgba(255,255,255,0.05);
       color: white;
       cursor: pointer;
+      text-decoration: none;
       transition: 0.3s;
     }
 
     .btn:hover {
+      transform: scale(1.1);
       background: #a855f7;
       box-shadow: 0 0 20px #a855f7;
-    }
-
-    /* PANEL DISCORD PRO */
-    .panel {
-      max-width: 400px;
-      margin: 30px auto;
-      background: #0f0f14;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 0 20px #a855f7;
-      display: none;
-    }
-
-    .user {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #1a1a22;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-
-    .user:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px #a855f7;
-    }
-
-    .user img {
-      border-radius: 50%;
-    }
-
-    .user span {
-      flex: 1;
-      margin-left: 10px;
-      text-align: left;
-    }
-
-    .online::after {
-      content: "🟢";
-    }
-
-    .offline::after {
-      content: "⚫";
     }
 
   </style>
@@ -119,47 +79,23 @@
 
   <br>
 
+  <!-- BOTONES -->
   <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
     <i class="fab fa-discord"></i> Discord
   </a>
 
-  <button class="btn" onclick="togglePanel()">
-    👥 Ver miembros
-  </button>
+  <a class="btn" href="https://wa.me/573234950793" target="_blank">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
 
   <button class="btn" onclick="toggleMusic()">
-    🎧 Música
+    <i class="fas fa-music"></i> Música
   </button>
-
-  <!-- PANEL MIEMBROS -->
-  <div id="panel" class="panel">
-
-    <div class="user online">
-      <img src="https://i.pravatar.cc/40?img=1">
-      <span>Jose</span>
-    </div>
-
-    <div class="user online">
-      <img src="https://i.pravatar.cc/40?img=2">
-      <span>Samu</span>
-    </div>
-
-    <div class="user offline">
-      <img src="https://i.pravatar.cc/40?img=3">
-      <span>Iker</span>
-    </div>
-
-    <div class="user online">
-      <img src="https://i.pravatar.cc/40?img=4">
-      <span>Tomxx</span>
-    </div>
-
-  </div>
 
 </div>
 
 <!-- AUDIO -->
-<audio id="music">
+<audio id="music" loop>
   <source src="https://cdn.pixabay.com/audio/2022/03/15/audio.mp3" type="audio/mp3">
 </audio>
 
@@ -176,12 +112,6 @@ particlesJS("particles-js", {
     line_linked: { enable: true, color: "#a855f7" }
   }
 });
-
-// PANEL MIEMBROS
-function togglePanel() {
-  let panel = document.getElementById("panel");
-  panel.style.display = panel.style.display === "none" ? "block" : "none";
-}
 
 // MUSICA
 function toggleMusic() {
