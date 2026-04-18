@@ -11,16 +11,16 @@
     body {
       margin: 0;
       font-family: Arial;
-      background: #0a0a0f;
+      background: #050505;
       color: white;
     }
 
-    /* NAVBAR */
+    /* NAV */
     nav {
       position: fixed;
       width: 100%;
       top: 0;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.8);
       display: flex;
       justify-content: space-between;
       padding: 15px 40px;
@@ -51,8 +51,8 @@
     /* HERO */
     .hero {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
     }
 
@@ -61,8 +61,9 @@
     }
 
     .hero h1 {
-      font-size: 50px;
+      font-size: 55px;
       color: #a855f7;
+      text-shadow: 0 0 15px #a855f7;
     }
 
     .hero p {
@@ -70,8 +71,13 @@
     }
 
     .hero img {
-      width: 250px;
-      filter: drop-shadow(0 0 20px #a855f7);
+      width: 260px;
+      filter: drop-shadow(0 0 25px #a855f7);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      50% { transform: translateY(-10px); }
     }
 
     /* BOTONES */
@@ -80,7 +86,7 @@
       padding: 12px 22px;
       margin-top: 15px;
       margin-right: 10px;
-      border-radius: 8px;
+      border-radius: 10px;
       text-decoration: none;
       color: white;
       border: 1px solid #a855f7;
@@ -89,13 +95,28 @@
 
     .btn:hover {
       background: #a855f7;
+      box-shadow: 0 0 20px #a855f7;
     }
 
-    /* SERVICIOS */
-    .services {
+    /* STATS */
+    .stats {
+      display: flex;
+      justify-content: center;
       text-align: center;
+      flex-wrap: wrap;
     }
 
+    .stat {
+      margin: 20px;
+      font-size: 25px;
+    }
+
+    .stat span {
+      color: #a855f7;
+      font-size: 35px;
+    }
+
+    /* CARDS */
     .cards {
       display: flex;
       justify-content: center;
@@ -106,19 +127,14 @@
       background: #111;
       margin: 15px;
       padding: 25px;
-      border-radius: 12px;
+      border-radius: 15px;
       width: 250px;
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px #a855f7;
-    }
-
-    /* CONTACTO */
-    .contact {
-      text-align: center;
+      transform: translateY(-8px);
+      box-shadow: 0 0 20px #a855f7;
     }
 
     footer {
@@ -136,19 +152,17 @@
   <h2>05-STAR</h2>
   <div>
     <a href="#inicio">Inicio</a>
+    <a href="#stats">Stats</a>
     <a href="#servicios">Servicios</a>
     <a href="#contacto">Contacto</a>
   </div>
 </nav>
 
-<!-- INICIO -->
+<!-- HERO -->
 <section id="inicio" class="hero">
   <div class="hero-text">
-    <h1>Impulsamos tu comunidad 🚀</h1>
-    <p>
-      05-STAR es una comunidad enfocada en gaming, proyectos digitales
-      y crecimiento online.
-    </p>
+    <h1>Gaming Community 🔥</h1>
+    <p>Únete a 05-STAR y crece con nosotros en gaming y proyectos digitales.</p>
 
     <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
       <i class="fab fa-discord"></i> Discord
@@ -162,21 +176,29 @@
   <img src="up.png">
 </section>
 
+<!-- STATS -->
+<section id="stats">
+  <div class="stats">
+    <div class="stat"><span>150+</span><br>Miembros</div>
+    <div class="stat"><span>24/7</span><br>Actividad</div>
+    <div class="stat"><span>100%</span><br>Gaming</div>
+  </div>
+</section>
+
 <!-- SERVICIOS -->
-<section id="servicios" class="services">
-  <h2>Servicios</h2>
+<section id="servicios">
+  <h2 style="text-align:center;color:#a855f7;">Qué hacemos</h2>
 
   <div class="cards">
-    <div class="card">🎮 Comunidad Gaming</div>
-    <div class="card">💬 Gestión de grupos</div>
+    <div class="card">🎮 Juegos y eventos</div>
+    <div class="card">💬 Comunidad activa</div>
     <div class="card">🚀 Proyectos digitales</div>
   </div>
 </section>
 
 <!-- CONTACTO -->
-<section id="contacto" class="contact">
-  <h2>Contáctanos</h2>
-  <p>Únete a nuestra comunidad o escríbenos directamente.</p>
+<section id="contacto" style="text-align:center;">
+  <h2 style="color:#a855f7;">Únete</h2>
 
   <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
     Discord
@@ -188,7 +210,7 @@
 </section>
 
 <footer>
-  © 2026 05-STAR - Todos los derechos reservados
+  © 2026 05-STAR
 </footer>
 
 </body>
