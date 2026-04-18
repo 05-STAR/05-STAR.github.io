@@ -2,103 +2,164 @@
 <html>
 <head>
   <title>05-STAR</title>
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      background-size: 400% 400%;
-      animation: fondo 10s ease infinite;
       font-family: Arial;
+      background: black;
       color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      overflow-x: hidden;
     }
 
-    @keyframes fondo {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+    /* PARTICULAS */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
     }
 
+    /* CONTENIDO */
     .container {
-      background: rgba(0,0,0,0.6);
-      padding: 40px;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      max-width: 600px;
+      text-align: center;
+      padding: 50px 20px;
     }
 
     img {
-      width: 150px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 20px white);
+      width: 220px;
+      filter: drop-shadow(0 0 30px white);
     }
 
+    /* TEXTO NEON */
     h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
+      font-size: 50px;
+      color: #fff;
+      text-shadow:
+        0 0 5px #fff,
+        0 0 10px #a855f7,
+        0 0 20px #a855f7,
+        0 0 40px #a855f7;
+      margin: 20px 0;
     }
 
     .descripcion {
-      font-size: 16px;
-      margin-bottom: 25px;
-      line-height: 1.5;
+      max-width: 600px;
+      margin: auto;
+      color: #ccc;
+      font-size: 18px;
     }
 
+    /* BOTONES */
     .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      margin: 10px;
-      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 25px;
+      margin: 15px;
+      border-radius: 12px;
       text-decoration: none;
       color: white;
-      font-size: 16px;
+      font-size: 18px;
+      font-weight: bold;
       transition: 0.3s;
     }
 
-    .discord {
-      background: #5865F2;
-    }
-
-    .whatsapp {
-      background: #25D366;
-    }
+    .discord { background: #5865F2; }
+    .whatsapp { background: #25D366; }
 
     .btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 15px white;
+      box-shadow: 0 0 20px white;
     }
+
+    /* SECCIONES */
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 35px;
+      color: #a855f7;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 10px;
+      display: inline-block;
+      width: 250px;
+      backdrop-filter: blur(10px);
+    }
+
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    
-    <!-- LOGO -->
-    <img src="up.png" alt="logo">
+<!-- PARTICULAS -->
+<div id="particles-js"></div>
 
-    <!-- TITULO -->
-    <h1>05-STAR</h1>
+<!-- INICIO -->
+<div class="container">
+  <img src="up.png">
+  <h1>05-STAR</h1>
 
-    <!-- TEXTO EDITABLE -->
-    <p class="descripcion">
-    Hola bienvenidos a 05-star esta empresa hace eventos y juegos para que el publico se divierta claro siempre con premio 😁
-    </p>
+  <p class="descripcion">
+    Bienvenido a 05-STAR 🔥 Aquí te puedes unir a los eventos desde el canal de discord de multiples juegos con premios o escribeme desde el whatsapp para 
+    unirte al grupo 😁
+  </p>
 
-    <!-- BOTONES -->
-    <a class="btn discord" href="https://discord.gg/GCNbavzj" target="_blank">
-      Discord
-    </a>
+  <br>
 
-    <a class="btn whatsapp" href="https://wa.me/+57 323 4950793" target="_blank">
-      WhatsApp
-    </a>
+  <a class="btn discord" href="https://discord.gg/BfJUbKP4" target="_blank">
+    <i class="fab fa-discord"></i> Discord
+  </a>
 
-  </div>
+  <a class="btn whatsapp" href="https://wa.me/573234950793" target="_blank">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
+</div>
+
+<!-- SECCION 1 -->
+<div class="section">
+  <h2>🔥 Sobre Nosotros</h2>
+  <p>Aquí puedes explicar qué es tu proyecto o comunidad.</p>
+</div>
+
+<!-- SECCION 2 -->
+<div class="section">
+  <h2>⚡ Qué hacemos</h2>
+
+  <div class="card">🎮 Gaming</div>
+  <div class="card">💬 Comunidad</div>
+  <div class="card">🚀 Proyectos</div>
+</div>
+
+<!-- SECCION 3 -->
+<div class="section">
+  <h2>📢 Únete</h2>
+  <p>Forma parte de la comunidad 05-STAR 😎</p>
+</div>
+
+<!-- SCRIPT PARTICULAS -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 80 },
+    size: { value: 3 },
+    move: { speed: 2 },
+    line_linked: { enable: true },
+  }
+});
+</script>
 
 </body>
 </html>
