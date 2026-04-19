@@ -2,291 +2,218 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>05-STAR</title>
+<title>05-STAR SYSTEM</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:monospace;}
 
 body{
-  background: radial-gradient(circle at top, #140021, #050505);
-  color:white;
+  background:#050505;
+  color:#00ffcc;
   overflow-x:hidden;
 }
 
-/* LOADER */
-#loader{
+/* EFECTO FONDO GRID */
+body::before{
+  content:"";
   position:fixed;
   width:100%;
   height:100%;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-.loader-text{
-  color:#a855f7;
-  font-size:30px;
-  text-shadow:0 0 20px #a855f7;
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  50%{opacity:0.3;}
-}
-
-/* PARTICULAS */
-#particles-js{
-  position:fixed;
-  width:100%;
-  height:100%;
+  background:
+    linear-gradient(rgba(0,255,200,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,200,0.05) 1px, transparent 1px);
+  background-size:40px 40px;
   z-index:-1;
 }
 
 /* NAV */
 nav{
-  position:fixed;
-  width:100%;
   display:flex;
   justify-content:space-between;
-  padding:15px 40px;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(10px);
+  padding:15px 30px;
+  border-bottom:1px solid rgba(0,255,200,0.2);
 }
 
 nav h2{
-  color:#a855f7;
-  text-shadow:0 0 15px #a855f7;
+  color:#00ffcc;
 }
 
 nav a{
-  color:white;
+  color:#00ffcc;
   margin-left:20px;
+  text-decoration:none;
+}
+
+nav a:hover{
+  text-shadow:0 0 10px #00ffcc;
+}
+
+/* TERMINAL */
+.terminal{
+  padding:100px 20px;
+  max-width:900px;
+  margin:auto;
+}
+
+.line{
+  margin:10px 0;
+}
+
+.cursor{
+  display:inline-block;
+  width:10px;
+  background:#00ffcc;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0;}
+}
+
+/* BOTONES */
+.btn{
+  margin-top:20px;
+  display:inline-block;
+  padding:10px 20px;
+  border:1px solid #00ffcc;
+  color:#00ffcc;
   text-decoration:none;
   transition:0.3s;
 }
 
-nav a:hover{
-  color:#a855f7;
-}
-
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.hero img{
-  width:200px;
-  animation:float 3s infinite;
-  filter:drop-shadow(0 0 20px #a855f7);
-}
-
-.hero h1{
-  font-size:70px;
-  background: linear-gradient(90deg, #a855f7, #ff00ff);
-  -webkit-background-clip:text;
-  color:transparent;
-  animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-  from{text-shadow:0 0 10px #a855f7;}
-  to{text-shadow:0 0 30px #ff00ff;}
-}
-
-.hero p{
-  opacity:0.8;
-  margin-top:10px;
-}
-
-/* BOTONES RGB */
-.btn{
-  padding:12px 25px;
-  margin:10px;
-  border-radius:12px;
-  border:1px solid #a855f7;
-  background:transparent;
-  color:white;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-}
-
-.btn::before{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:linear-gradient(90deg,transparent,#a855f7,transparent);
-  left:-100%;
-  transition:0.5s;
-}
-
-.btn:hover::before{
-  left:100%;
-}
-
-/* STATS */
-.stats{
-  margin-top:20px;
-  display:flex;
-  gap:20px;
-}
-
-.stat{
-  padding:10px 15px;
-  border-radius:10px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid #a855f7;
+.btn:hover{
+  background:#00ffcc;
+  color:#000;
+  box-shadow:0 0 15px #00ffcc;
 }
 
 /* SECCIONES */
-section{
-  padding:100px 20px;
-  max-width:900px;
-  margin:auto;
-  text-align:center;
+.section{
+  margin-top:60px;
   opacity:0;
-  transform:translateY(50px);
-  transition:0.7s;
+  transform:translateY(30px);
+  transition:0.6s;
 }
 
-section.visible{
+.section.show{
   opacity:1;
   transform:translateY(0);
 }
 
-section h2{
-  color:#a855f7;
-  margin-bottom:20px;
+/* GLITCH */
+.glitch{
+  font-size:40px;
+  position:relative;
 }
 
-section p{
-  opacity:0.85;
-  line-height:1.6;
+.glitch::before,
+.glitch::after{
+  content:attr(data-text);
+  position:absolute;
+  left:0;
 }
 
-/* FLOAT */
-@keyframes float{
-  50%{transform:translateY(-12px);}
+.glitch::before{
+  color:red;
+  animation:glitch 1s infinite;
+}
+
+.glitch::after{
+  color:blue;
+  animation:glitch 1s infinite reverse;
+}
+
+@keyframes glitch{
+  0%{transform:translate(0);}
+  20%{transform:translate(-2px,2px);}
+  40%{transform:translate(-2px,-2px);}
+  60%{transform:translate(2px,2px);}
+  80%{transform:translate(2px,-2px);}
+  100%{transform:translate(0);}
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-text">CARGANDO 05-STAR...</div>
-</div>
-
-<div id="particles-js"></div>
-
 <nav>
-  <h2>05-STAR</h2>
+  <h2>05-STAR_SYS</h2>
   <div>
-    <a href="#empresa">Empresa</a>
-    <a href="#leyenda">Leyenda</a>
-    <a href="#modo">Modo Dios</a>
+    <a href="#empresa">/empresa</a>
+    <a href="#leyenda">/leyenda</a>
+    <a href="#modo">/modo_dios</a>
   </div>
 </nav>
 
-<div class="hero">
+<div class="terminal">
 
-  <img src="up.png">
+  <div class="glitch" data-text="05-STAR">05-STAR</div>
 
-  <h1>05-STAR</h1>
-  <p>Gaming • Elite • Comunidad Profesional</p>
+  <div class="line" id="text"></div>
 
-  <div>
-    <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
-      <i class="fab fa-discord"></i> Discord
-    </a>
+  <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
+    <i class="fab fa-discord"></i> conectar_discord
+  </a>
 
-    <a class="btn" href="https://wa.me/573234950793" target="_blank">
-      <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
+  <a class="btn" href="https://wa.me/573234950793" target="_blank">
+    <i class="fab fa-whatsapp"></i> conectar_whatsapp
+  </a>
+
+  <div class="section" id="empresa">
+    <h3>> empresa</h3>
+    <p>
+      05-STAR es una red digital enfocada en alto rendimiento gaming,
+      estrategia y crecimiento competitivo.
+    </p>
   </div>
 
-  <div class="stats">
-    <div class="stat">🟢 Online: <span id="online">--</span></div>
-    <div class="stat">⚡ Estado: Activo</div>
+  <div class="section" id="leyenda">
+    <h3>> leyenda</h3>
+    <p>
+      No es un grupo común. Es una identidad basada en disciplina,
+      evolución y dominio del entorno digital.
+    </p>
+  </div>
+
+  <div class="section" id="modo">
+    <h3>> modo_dios</h3>
+    <p>
+      Nivel máximo desbloqueado. Control total, precisión y mentalidad
+      de élite.
+    </p>
   </div>
 
 </div>
 
-<section id="empresa">
-  <h2>Empresa</h2>
-  <p>
-    05-STAR es una comunidad digital orientada al alto rendimiento en gaming,
-    creación de contenido y desarrollo de proyectos digitales.
-  </p>
-</section>
-
-<section id="leyenda">
-  <h2>Leyenda</h2>
-  <p>
-    Representamos disciplina, mentalidad competitiva y evolución constante
-    dentro del entorno digital.
-  </p>
-</section>
-
-<section id="modo">
-  <h2>Modo Dios</h2>
-  <p>
-    Nivel máximo de desempeño. Estrategia, control y dominio total del juego.
-  </p>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
 <script>
-// LOADER
-window.onload = () => {
-  document.getElementById("loader").style.display = "none";
-};
+// TEXTO TIPO HACKER
+const txt = "iniciando sistema...\nacceso concedido...\nbienvenido a 05-STAR\ncargando interfaz...\n";
+let i = 0;
+let speed = 40;
 
-// PARTICULAS
-particlesJS("particles-js", {
-  particles:{
-    number:{value:80},
-    color:{value:"#a855f7"},
-    size:{value:3},
-    move:{speed:2},
-    line_linked:{enable:true, color:"#a855f7"}
+function type(){
+  if(i < txt.length){
+    document.getElementById("text").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(type, speed);
   }
-});
+}
 
-// SCROLL
-const sections = document.querySelectorAll("section");
+type();
+
+// SCROLL ANIMACION
+const sections = document.querySelectorAll(".section");
 
 window.addEventListener("scroll", ()=>{
   sections.forEach(sec=>{
     const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      sec.classList.add("visible");
+    if(top < window.innerHeight - 50){
+      sec.classList.add("show");
     }
   });
 });
-
-// CONTADOR FAKE (REAL SI QUIERES API)
-let online = document.getElementById("online");
-let count = 20;
-
-setInterval(()=>{
-  count += Math.floor(Math.random()*3 - 1);
-  if(count < 10) count = 10;
-  online.innerText = count;
-},2000);
-
 </script>
 
 </body>
