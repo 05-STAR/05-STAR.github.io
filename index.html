@@ -1,128 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>05-STAR</title>
+<meta charset="UTF-8">
+<title>05-STAR</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #050505;
-      color: white;
-      text-align: center;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
 
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
+body {
+  background: linear-gradient(135deg, #0a0a0a, #1a0129);
+  color: white;
+  overflow-x: hidden;
+}
 
-    .container {
-      padding: 100px 20px;
-    }
+/* NAVBAR */
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
 
-    h1 {
-      font-size: 55px;
-      color: #a855f7;
-      text-shadow: 0 0 20px #a855f7;
-    }
+nav h2 {
+  color: #a855f7;
+}
 
-    img {
-      width: 220px;
-      filter: drop-shadow(0 0 20px #a855f7);
-      animation: float 3s infinite;
-    }
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
 
-    @keyframes float {
-      50% { transform: translateY(-10px); }
-    }
+nav a:hover {
+  color: #a855f7;
+}
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 25px;
-      margin: 10px;
-      border-radius: 12px;
-      border: 1px solid #a855f7;
-      background: rgba(255,255,255,0.05);
-      color: white;
-      cursor: pointer;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1.5s ease;
+}
 
-    .btn:hover {
-      transform: scale(1.1);
-      background: #a855f7;
-      box-shadow: 0 0 20px #a855f7;
-    }
+.hero img {
+  width: 180px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 20px #a855f7);
+}
 
-  </style>
+.hero h1 {
+  font-size: 60px;
+  color: #a855f7;
+  text-shadow: 0 0 20px #a855f7;
+}
+
+.hero p {
+  opacity: 0.8;
+}
+
+/* BOTONES */
+.buttons {
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 12px 22px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #a855f7;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #a855f7;
+  box-shadow: 0 0 15px #a855f7;
+}
+
+/* SECCIONES */
+section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: auto;
+  animation: fadeUp 1s ease;
+}
+
+section h2 {
+  color: #a855f7;
+  margin-bottom: 20px;
+}
+
+section p {
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes fadeUp {
+  from {opacity:0; transform: translateY(40px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+</style>
 </head>
 
 <body>
 
-<div id="particles-js"></div>
+<!-- NAV -->
+<nav>
+  <h2>05-STAR</h2>
+  <div>
+    <a href="#empresa">Empresa</a>
+    <a href="#leyenda">Leyenda</a>
+    <a href="#modo">Modo Dios</a>
+  </div>
+</nav>
 
-<div class="container">
-
+<!-- INICIO -->
+<div class="hero">
   <img src="up.png">
-
   <h1>05-STAR</h1>
+  <p>Comunidad Gaming & Desarrollo Digital</p>
 
-  <p>Comunidad gaming 🔥</p>
+  <div class="buttons">
+    <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
+      <i class="fab fa-discord"></i> Discord
+    </a>
 
-  <br>
-
-  <!-- BOTONES -->
-  <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
-    <i class="fab fa-discord"></i> Discord
-  </a>
-
-  <a class="btn" href="https://wa.me/573234950793" target="_blank">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-  </a>
-
-  <button class="btn" onclick="toggleMusic()">
-    <i class="fas fa-music"></i> Música
-  </button>
-
+    <a class="btn" href="https://wa.me/573234950793" target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+  </div>
 </div>
 
-<!-- AUDIO -->
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio.mp3" type="audio/mp3">
-</audio>
+<!-- EMPRESA -->
+<section id="empresa">
+  <h2>Empresa</h2>
+  <p>
+    05-STAR es una comunidad enfocada en el crecimiento dentro del mundo gaming,
+    la creación de contenido y el desarrollo digital. Nuestro objetivo es construir
+    un espacio donde los jugadores puedan conectarse, colaborar y evolucionar
+    hacia un nivel más profesional.
+  </p>
+</section>
 
-<!-- PARTICULAS -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<!-- LEYENDA -->
+<section id="leyenda">
+  <h2>Leyenda</h2>
+  <p>
+    No somos solo un grupo, somos una identidad. 05-STAR nace con la visión
+    de destacar, competir y dejar huella en cada proyecto. Cada miembro representa
+    disciplina, habilidad y mentalidad de alto nivel dentro del entorno gaming.
+  </p>
+</section>
 
-<script>
-particlesJS("particles-js", {
-  particles: {
-    number: { value: 60 },
-    color: { value: "#a855f7" },
-    size: { value: 3 },
-    move: { speed: 1.5 },
-    line_linked: { enable: true, color: "#a855f7" }
-  }
-});
-
-// MUSICA
-function toggleMusic() {
-  let music = document.getElementById("music");
-  if (music.paused) {
-    music.play();
-  } else {
-    music.pause();
-  }
-}
-</script>
+<!-- MODO DIOS -->
+<section id="modo">
+  <h2>Modo Dios</h2>
+  <p>
+    El Modo Dios representa el máximo nivel dentro de la comunidad. Es la evolución
+    del jugador promedio hacia un perfil competitivo, estratégico y dominante.
+    Aquí no se juega por jugar, se juega para ganar y construir reputación.
+  </p>
+</section>
 
 </body>
 </html>
