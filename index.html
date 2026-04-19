@@ -15,7 +15,7 @@ body{
   overflow:hidden;
 }
 
-/* CANVAS MATRIX */
+/* MATRIX */
 canvas{
   position:fixed;
   top:0;
@@ -23,42 +23,63 @@ canvas{
   z-index:-1;
 }
 
-/* TERMINAL */
-#terminal{
-  padding:40px;
-  white-space:pre-line;
+/* LOGIN */
+#login{
+  position:fixed;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:black;
+}
+
+input{
+  margin:10px;
+  padding:10px;
+  background:black;
+  border:1px solid #00ffcc;
+  color:#00ffcc;
+}
+
+button{
+  padding:10px 20px;
+  border:1px solid #00ffcc;
+  background:black;
+  color:#00ffcc;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#00ffcc;
+  color:black;
 }
 
 /* CONTENIDO */
 #contenido{
   display:none;
   text-align:center;
-  padding:40px 20px;
+  padding:40px;
 }
 
-/* LOGO HACKER */
+/* LOGO */
 .logo{
-  font-size:60px;
-  font-weight:bold;
-  position:relative;
-  color:#00ffcc;
+  font-size:50px;
   animation:glitch 1s infinite;
 }
 
 @keyframes glitch{
   0%{text-shadow:2px 0 red;}
-  20%{text-shadow:-2px 0 blue;}
-  40%{text-shadow:2px 2px red;}
-  60%{text-shadow:-2px -2px blue;}
-  80%{text-shadow:2px 0 red;}
+  50%{text-shadow:-2px 0 blue;}
   100%{text-shadow:0 0 10px #00ffcc;}
 }
 
-/* BIO */
+/* TEXTO */
 .bio{
-  max-width:700px;
+  max-width:600px;
   margin:20px auto;
-  opacity:0.85;
+  opacity:0.9;
 }
 
 /* BOTONES */
@@ -69,43 +90,27 @@ canvas{
   border:1px solid #00ffcc;
   color:#00ffcc;
   text-decoration:none;
-  transition:0.3s;
 }
 
 .btn:hover{
   background:#00ffcc;
-  color:#000;
-  box-shadow:0 0 15px #00ffcc;
+  color:black;
 }
 
-/* PANEL BUGS */
+/* PANEL */
 .panel{
   position:fixed;
   right:0;
   top:0;
-  width:250px;
+  width:220px;
   height:100%;
   background:rgba(0,0,0,0.7);
   border-left:1px solid #00ffcc;
-  padding:10px;
   font-size:12px;
   overflow:auto;
 }
 
-.error{
-  color:red;
-  margin:5px 0;
-}
-
-/* SECCIONES */
-.section{
-  margin-top:40px;
-  max-width:800px;
-  margin-left:auto;
-  margin-right:auto;
-  text-align:left;
-}
-
+.error{color:red;}
 </style>
 </head>
 
@@ -113,8 +118,13 @@ canvas{
 
 <canvas id="matrix"></canvas>
 
-<!-- TERMINAL -->
-<div id="terminal"></div>
+<!-- LOGIN -->
+<div id="login">
+  <h2>ACCESS SYSTEM</h2>
+  <input type="text" placeholder="usuario">
+  <input type="password" placeholder="contraseña">
+  <button onclick="entrar()">LOGIN</button>
+</div>
 
 <!-- CONTENIDO -->
 <div id="contenido">
@@ -122,64 +132,41 @@ canvas{
   <div class="logo">05-STAR</div>
 
   <p class="bio">
-    >> 05-STAR es una comunidad digital enfocada en gaming competitivo,
-    estrategia y desarrollo profesional dentro del entorno digital.
+    >> Acceso concedido. Bienvenido al sistema 05-STAR.
+    Comunidad enfocada en gaming competitivo, estrategia y desarrollo digital.
   </p>
 
   <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
-    <i class="fab fa-discord"></i> conectar_discord
+    <i class="fab fa-discord"></i> Discord
   </a>
 
   <a class="btn" href="https://wa.me/573234950793" target="_blank">
-    <i class="fab fa-whatsapp"></i> conectar_whatsapp
+    <i class="fab fa-whatsapp"></i> WhatsApp
   </a>
 
-  <div class="section">
-    <h3>> empresa</h3>
-    <p>Red enfocada en alto rendimiento gaming.</p>
-  </div>
-
-  <div class="section">
-    <h3>> leyenda</h3>
-    <p>Disciplina, evolución y dominio digital.</p>
-  </div>
-
-  <div class="section">
-    <h3>> modo_dios</h3>
-    <p>Control total. Nivel máximo.</p>
-  </div>
+  <!-- WIDGET DISCORD -->
+  <br><br>
+  <iframe src="https://discord.com/widget?id=1494859008975179950&theme=dark"
+  width="300" height="400"></iframe>
 
 </div>
 
 <!-- PANEL BUGS -->
-<div class="panel" id="panel">
-  <b>SYSTEM LOG</b>
-</div>
+<div class="panel" id="panel"><b>SYSTEM LOG</b></div>
+
+<!-- AUDIO -->
+<audio id="sound">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_115b9bce3b.mp3">
+</audio>
 
 <script>
 
-// TEXTO HACKER
-const texto = 
-"accediendo al sistema...\n" +
-"verificando credenciales...\n" +
-"acceso concedido ✔\n" +
-"bienvenido administrador\n\n";
-
-let i = 0;
-
-function escribir(){
-  if(i < texto.length){
-    document.getElementById("terminal").innerHTML += texto.charAt(i);
-    i++;
-    setTimeout(escribir, 25);
-  } else {
-    setTimeout(()=>{
-      document.getElementById("terminal").style.display="none";
-      document.getElementById("contenido").style.display="block";
-    },800);
-  }
+// LOGIN FAKE
+function entrar(){
+  document.getElementById("login").style.display="none";
+  document.getElementById("contenido").style.display="block";
+  document.getElementById("sound").play();
 }
-escribir();
 
 // MATRIX
 let canvas = document.getElementById("matrix");
@@ -195,39 +182,37 @@ let fontSize = 14;
 let columns = canvas.width / fontSize;
 let drops = [];
 
-for(let x = 0; x < columns; x++)
-  drops[x] = 1;
+for(let x=0;x<columns;x++) drops[x]=1;
 
 function draw(){
-  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillStyle="rgba(0,0,0,0.05)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  ctx.fillStyle = "#0f0";
-  ctx.font = fontSize + "px monospace";
+  ctx.fillStyle="#0f0";
+  ctx.font=fontSize+"px monospace";
 
-  for(let i = 0; i < drops.length; i++){
-    let text = letters[Math.floor(Math.random()*letters.length)];
-    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+  for(let i=0;i<drops.length;i++){
+    let text=letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
 
-    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
-      drops[i] = 0;
+    if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+      drops[i]=0;
 
     drops[i]++;
   }
 }
 
-setInterval(draw, 33);
+setInterval(draw,33);
 
-// BUGS PANEL
+// BUGS
 const panel = document.getElementById("panel");
 
 setInterval(()=>{
-  let error = document.createElement("div");
-  error.className = "error";
-  error.innerText = "ERROR_"+Math.floor(Math.random()*999)+": system anomaly";
-  panel.appendChild(error);
-
-  panel.scrollTop = panel.scrollHeight;
+  let e=document.createElement("div");
+  e.className="error";
+  e.innerText="ERROR_"+Math.floor(Math.random()*999);
+  panel.appendChild(e);
+  panel.scrollTop=panel.scrollHeight;
 },1500);
 
 </script>
