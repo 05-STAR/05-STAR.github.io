@@ -7,17 +7,35 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
 body{
   background: radial-gradient(circle at top, #140021, #050505);
   color:white;
   overflow-x:hidden;
+}
+
+/* LOADER */
+#loader{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.loader-text{
+  color:#a855f7;
+  font-size:30px;
+  text-shadow:0 0 20px #a855f7;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0.3;}
 }
 
 /* PARTICULAS */
@@ -37,12 +55,11 @@ nav{
   padding:15px 40px;
   background:rgba(0,0,0,0.4);
   backdrop-filter:blur(10px);
-  z-index:1000;
 }
 
 nav h2{
   color:#a855f7;
-  text-shadow:0 0 10px #a855f7;
+  text-shadow:0 0 15px #a855f7;
 }
 
 nav a{
@@ -73,9 +90,16 @@ nav a:hover{
 }
 
 .hero h1{
-  font-size:65px;
-  color:#a855f7;
-  text-shadow:0 0 30px #a855f7;
+  font-size:70px;
+  background: linear-gradient(90deg, #a855f7, #ff00ff);
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 10px #a855f7;}
+  to{text-shadow:0 0 30px #ff00ff;}
 }
 
 .hero p{
@@ -83,11 +107,7 @@ nav a:hover{
   margin-top:10px;
 }
 
-/* BOTONES */
-.buttons{
-  margin-top:25px;
-}
-
+/* BOTONES RGB */
 .btn{
   padding:12px 25px;
   margin:10px;
@@ -96,17 +116,27 @@ nav a:hover{
   background:transparent;
   color:white;
   cursor:pointer;
-  transition:0.3s;
+  position:relative;
+  overflow:hidden;
 }
 
-.btn:hover{
-  background:#a855f7;
-  box-shadow:0 0 20px #a855f7;
+.btn::before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,#a855f7,transparent);
+  left:-100%;
+  transition:0.5s;
+}
+
+.btn:hover::before{
+  left:100%;
 }
 
 /* STATS */
 .stats{
-  margin-top:25px;
+  margin-top:20px;
   display:flex;
   gap:20px;
 }
@@ -120,13 +150,13 @@ nav a:hover{
 
 /* SECCIONES */
 section{
-  padding:90px 20px;
+  padding:100px 20px;
   max-width:900px;
   margin:auto;
   text-align:center;
   opacity:0;
-  transform:translateY(40px);
-  transition:0.6s;
+  transform:translateY(50px);
+  transition:0.7s;
 }
 
 section.visible{
@@ -144,7 +174,7 @@ section p{
   line-height:1.6;
 }
 
-/* ANIMACIONES */
+/* FLOAT */
 @keyframes float{
   50%{transform:translateY(-12px);}
 }
@@ -152,6 +182,11 @@ section p{
 </head>
 
 <body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-text">CARGANDO 05-STAR...</div>
+</div>
 
 <div id="particles-js"></div>
 
@@ -169,9 +204,9 @@ section p{
   <img src="up.png">
 
   <h1>05-STAR</h1>
-  <p>Gaming • Comunidad • Nivel Profesional</p>
+  <p>Gaming • Elite • Comunidad Profesional</p>
 
-  <div class="buttons">
+  <div>
     <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
       <i class="fab fa-discord"></i> Discord
     </a>
@@ -181,10 +216,9 @@ section p{
     </a>
   </div>
 
-  <!-- ESTILO STREAMER -->
   <div class="stats">
     <div class="stat">🟢 Online: <span id="online">--</span></div>
-    <div class="stat">👥 Comunidad: Activa</div>
+    <div class="stat">⚡ Estado: Activo</div>
   </div>
 
 </div>
@@ -192,37 +226,35 @@ section p{
 <section id="empresa">
   <h2>Empresa</h2>
   <p>
-    05-STAR es una comunidad digital enfocada en gaming competitivo,
-    creación de contenido y crecimiento profesional. Nuestra visión
-    es desarrollar un entorno donde cada miembro evolucione hacia
-    un nivel superior dentro del ecosistema digital.
+    05-STAR es una comunidad digital orientada al alto rendimiento en gaming,
+    creación de contenido y desarrollo de proyectos digitales.
   </p>
 </section>
 
 <section id="leyenda">
   <h2>Leyenda</h2>
   <p>
-    Más que un grupo, somos una identidad. 05-STAR representa disciplina,
-    constancia y alto rendimiento. Cada integrante forma parte de una
-    cultura enfocada en destacar dentro del mundo gaming.
+    Representamos disciplina, mentalidad competitiva y evolución constante
+    dentro del entorno digital.
   </p>
 </section>
 
 <section id="modo">
   <h2>Modo Dios</h2>
   <p>
-    El nivel máximo. Aquí se alcanza el dominio total: estrategia,
-    habilidad y mentalidad competitiva. No se trata solo de jugar,
-    se trata de sobresalir.
+    Nivel máximo de desempeño. Estrategia, control y dominio total del juego.
   </p>
 </section>
-
-<!-- SCRIPTS -->
 
 <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 
 <script>
-// PARTICULAS PRO
+// LOADER
+window.onload = () => {
+  document.getElementById("loader").style.display = "none";
+};
+
+// PARTICULAS
 particlesJS("particles-js", {
   particles:{
     number:{value:80},
@@ -233,7 +265,7 @@ particlesJS("particles-js", {
   }
 });
 
-// ANIMACION SCROLL
+// SCROLL
 const sections = document.querySelectorAll("section");
 
 window.addEventListener("scroll", ()=>{
@@ -245,9 +277,9 @@ window.addEventListener("scroll", ()=>{
   });
 });
 
-// FAKE CONTADOR (SI QUIERES REAL TE LO HAGO)
+// CONTADOR FAKE (REAL SI QUIERES API)
 let online = document.getElementById("online");
-let count = 15;
+let count = 20;
 
 setInterval(()=>{
   count += Math.floor(Math.random()*3 - 1);
