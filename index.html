@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>05-STAR</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -17,7 +18,7 @@ body{
 
 /* MODO CLARO */
 body.light{
-  background:#f5f5f5;
+  background:#f2f2f2;
   color:#111;
 }
 
@@ -26,17 +27,17 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:15px 40px;
+  padding:15px 30px;
   background:rgba(0,0,0,0.6);
   backdrop-filter:blur(10px);
 }
 
 nav img{
-  width:60px;
+  width:55px;
 }
 
 .toggle{
-  border:1px solid #a855f7;
+  border:1px solid #888;
   padding:6px 12px;
   cursor:pointer;
 }
@@ -49,63 +50,91 @@ nav img{
 }
 
 h1{
-  font-size:55px;
+  font-size:50px;
+  margin-bottom:10px;
+}
+
+/* NEON SOLO EN OSCURO */
+body:not(.light) h1{
   color:#a855f7;
   text-shadow:0 0 20px #a855f7;
 }
 
-body.light h1{
-  color:#7c3aed;
-  text-shadow:none;
-}
-
+/* BIO */
 .bio{
   margin-top:20px;
   line-height:1.7;
   opacity:0.9;
 }
 
-/* BOTONES ICONO */
+/* BOTONES RGB */
 .socials{
   margin-top:30px;
 }
 
 .socials a{
-  font-size:28px;
-  margin:10px;
+  font-size:26px;
+  margin:12px;
   color:white;
   transition:0.3s;
-}
-
-.socials a:hover{
-  color:#a855f7;
-  text-shadow:0 0 15px #a855f7;
+  position:relative;
 }
 
 body.light .socials a{
   color:#111;
 }
 
-/* FONDO NEON */
-.bg{
-  position:fixed;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  z-index:-1;
-}
-
-.bg span{
+.socials a::before{
+  content:"";
   position:absolute;
-  width:4px;
-  height:4px;
-  background:#a855f7;
-  animation:move 10s linear infinite;
+  width:0%;
+  height:2px;
+  bottom:-5px;
+  left:0;
+  background:linear-gradient(90deg,red,blue,purple);
+  transition:0.3s;
 }
 
-@keyframes move{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
+.socials a:hover::before{
+  width:100%;
+}
+
+.socials a:hover{
+  text-shadow:0 0 10px #a855f7;
+}
+
+/* SECCIONES */
+.section{
+  padding:60px 20px;
+  max-width:900px;
+  margin:auto;
+}
+
+.section h2{
+  margin-bottom:15px;
+}
+
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.card{
+  flex:1 1 250px;
+  padding:20px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.05);
+  transition:0.3s;
+}
+
+body.light .card{
+  background:#e5e5e5;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 15px rgba(168,85,247,0.5);
 }
 
 /* SCROLL */
@@ -120,18 +149,22 @@ body.light .socials a{
   transform:translateY(0);
 }
 
+/* FOOTER */
 footer{
   text-align:center;
-  padding:20px;
+  padding:25px;
   opacity:0.7;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  h1{font-size:35px;}
+  nav{padding:10px 15px;}
 }
 </style>
 </head>
 
 <body>
-
-<!-- FONDO -->
-<div class="bg" id="bg"></div>
 
 <nav>
   <img src="up.png">
@@ -143,18 +176,15 @@ footer{
   <h1>05-STAR</h1>
 
   <p class="bio">
-    05-STAR es una comunidad enfocada en el mundo gaming, la creación de contenido
-    y el desarrollo digital. Nuestro objetivo es construir un entorno donde los
-    jugadores puedan crecer, competir y conectar a un nivel más profesional.
-    
-    Nos enfocamos en la disciplina, el trabajo en equipo y la evolución constante,
-    formando una comunidad que busca destacar dentro del ecosistema digital.
-    
-    Aquí no solo se juega, se construye identidad, se mejora el rendimiento y se
-    desarrolla una mentalidad competitiva real.
+    05-STAR es una comunidad enfocada en gaming competitivo, creación de contenido
+    y desarrollo digital. Nuestro objetivo es construir un entorno donde los jugadores
+    puedan evolucionar, mejorar sus habilidades y conectar con otros a un nivel más profesional.
+
+    Buscamos fomentar la disciplina, la estrategia y el trabajo en equipo, creando una
+    identidad sólida dentro del mundo gaming. No se trata solo de jugar, se trata de crecer,
+    destacar y construir una comunidad con visión.
   </p>
 
-  <!-- BOTONES ICONO -->
   <div class="socials">
     <a href="https://discord.gg/BfJUbKP4" target="_blank">
       <i class="fab fa-discord"></i>
@@ -169,6 +199,28 @@ footer{
     </a>
   </div>
 
+</div>
+
+<!-- SECCION EXTRA (PARA HACERLA MAS LARGA Y PRO) -->
+<div class="section hidden">
+  <h2>¿Qué hacemos?</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>🎮 Gaming</h3>
+      <p>Participamos en juegos competitivos y fomentamos el crecimiento de habilidades.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎥 Contenido</h3>
+      <p>Apoyamos la creación de contenido digital en plataformas como YouTube.</p>
+    </div>
+
+    <div class="card">
+      <h3>🚀 Comunidad</h3>
+      <p>Construimos una comunidad activa enfocada en mejorar constantemente.</p>
+    </div>
+  </div>
 </div>
 
 <footer>
@@ -195,16 +247,6 @@ const observer = new IntersectionObserver(entries=>{
 document.querySelectorAll(".hidden").forEach(el=>{
   observer.observe(el);
 });
-
-// FONDO PARTICULAS
-const bg = document.getElementById("bg");
-
-for(let i=0;i<60;i++){
-  let span=document.createElement("span");
-  span.style.left=Math.random()*100+"%";
-  span.style.animationDuration=(5+Math.random()*10)+"s";
-  bg.appendChild(span);
-}
 
 </script>
 
