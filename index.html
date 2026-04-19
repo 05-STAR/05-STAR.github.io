@@ -10,20 +10,16 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:monospace;}
 
 body{
-  background:#050505;
+  background:black;
   color:#00ffcc;
+  overflow:hidden;
 }
 
-/* GRID FONDO */
-body::before{
-  content:"";
+/* CANVAS MATRIX */
+canvas{
   position:fixed;
-  width:100%;
-  height:100%;
-  background:
-    linear-gradient(rgba(0,255,200,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,255,200,0.05) 1px, transparent 1px);
-  background-size:40px 40px;
+  top:0;
+  left:0;
   z-index:-1;
 }
 
@@ -40,48 +36,22 @@ body::before{
   padding:40px 20px;
 }
 
-/* LOGO */
+/* LOGO HACKER */
 .logo{
-  width:180px;
-  margin-bottom:20px;
-  filter:drop-shadow(0 0 15px #00ffcc);
-  animation:float 3s infinite;
-}
-
-@keyframes float{
-  50%{transform:translateY(-10px);}
-}
-
-/* TITULO GLITCH */
-.glitch{
-  font-size:50px;
+  font-size:60px;
+  font-weight:bold;
   position:relative;
-}
-
-.glitch::before,
-.glitch::after{
-  content:attr(data-text);
-  position:absolute;
-  left:0;
-}
-
-.glitch::before{
-  color:red;
+  color:#00ffcc;
   animation:glitch 1s infinite;
 }
 
-.glitch::after{
-  color:blue;
-  animation:glitch 1s infinite reverse;
-}
-
 @keyframes glitch{
-  0%{transform:translate(0);}
-  20%{transform:translate(-2px,2px);}
-  40%{transform:translate(-2px,-2px);}
-  60%{transform:translate(2px,2px);}
-  80%{transform:translate(2px,-2px);}
-  100%{transform:translate(0);}
+  0%{text-shadow:2px 0 red;}
+  20%{text-shadow:-2px 0 blue;}
+  40%{text-shadow:2px 2px red;}
+  60%{text-shadow:-2px -2px blue;}
+  80%{text-shadow:2px 0 red;}
+  100%{text-shadow:0 0 10px #00ffcc;}
 }
 
 /* BIO */
@@ -108,6 +78,25 @@ body::before{
   box-shadow:0 0 15px #00ffcc;
 }
 
+/* PANEL BUGS */
+.panel{
+  position:fixed;
+  right:0;
+  top:0;
+  width:250px;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  border-left:1px solid #00ffcc;
+  padding:10px;
+  font-size:12px;
+  overflow:auto;
+}
+
+.error{
+  color:red;
+  margin:5px 0;
+}
+
 /* SECCIONES */
 .section{
   margin-top:40px;
@@ -117,29 +106,24 @@ body::before{
   text-align:left;
 }
 
-.section h3{
-  margin-bottom:10px;
-}
-
 </style>
 </head>
 
 <body>
 
+<canvas id="matrix"></canvas>
+
 <!-- TERMINAL -->
 <div id="terminal"></div>
 
-<!-- CONTENIDO REAL -->
+<!-- CONTENIDO -->
 <div id="contenido">
 
-  <img src="up.png" class="logo">
-
-  <div class="glitch" data-text="05-STAR">05-STAR</div>
+  <div class="logo">05-STAR</div>
 
   <p class="bio">
     >> 05-STAR es una comunidad digital enfocada en gaming competitivo,
-    creación de contenido y desarrollo estratégico. Su objetivo es formar
-    jugadores y creadores con mentalidad profesional dentro del entorno digital.
+    estrategia y desarrollo profesional dentro del entorno digital.
   </p>
 
   <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
@@ -150,30 +134,26 @@ body::before{
     <i class="fab fa-whatsapp"></i> conectar_whatsapp
   </a>
 
-  <!-- SECCIONES -->
   <div class="section">
     <h3>> empresa</h3>
-    <p>
-      05-STAR opera como una red digital enfocada en alto rendimiento,
-      colaboración y crecimiento dentro del ecosistema gaming.
-    </p>
+    <p>Red enfocada en alto rendimiento gaming.</p>
   </div>
 
   <div class="section">
     <h3>> leyenda</h3>
-    <p>
-      Cada miembro representa disciplina, constancia y evolución dentro
-      del mundo digital competitivo.
-    </p>
+    <p>Disciplina, evolución y dominio digital.</p>
   </div>
 
   <div class="section">
     <h3>> modo_dios</h3>
-    <p>
-      Nivel máximo desbloqueado. Dominio total del juego, estrategia y ejecución.
-    </p>
+    <p>Control total. Nivel máximo.</p>
   </div>
 
+</div>
+
+<!-- PANEL BUGS -->
+<div class="panel" id="panel">
+  <b>SYSTEM LOG</b>
 </div>
 
 <script>
@@ -183,7 +163,7 @@ const texto =
 "accediendo al sistema...\n" +
 "verificando credenciales...\n" +
 "acceso concedido ✔\n" +
-"cargando interfaz 05-STAR...\n\n";
+"bienvenido administrador\n\n";
 
 let i = 0;
 
@@ -191,7 +171,7 @@ function escribir(){
   if(i < texto.length){
     document.getElementById("terminal").innerHTML += texto.charAt(i);
     i++;
-    setTimeout(escribir, 30);
+    setTimeout(escribir, 25);
   } else {
     setTimeout(()=>{
       document.getElementById("terminal").style.display="none";
@@ -199,8 +179,56 @@ function escribir(){
     },800);
   }
 }
-
 escribir();
+
+// MATRIX
+let canvas = document.getElementById("matrix");
+let ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+let letters = "01";
+letters = letters.split("");
+
+let fontSize = 14;
+let columns = canvas.width / fontSize;
+let drops = [];
+
+for(let x = 0; x < columns; x++)
+  drops[x] = 1;
+
+function draw(){
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle = "#0f0";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i = 0; i < drops.length; i++){
+    let text = letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
+      drops[i] = 0;
+
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 33);
+
+// BUGS PANEL
+const panel = document.getElementById("panel");
+
+setInterval(()=>{
+  let error = document.createElement("div");
+  error.className = "error";
+  error.innerText = "ERROR_"+Math.floor(Math.random()*999)+": system anomaly";
+  panel.appendChild(error);
+
+  panel.scrollTop = panel.scrollHeight;
+},1500);
 
 </script>
 
