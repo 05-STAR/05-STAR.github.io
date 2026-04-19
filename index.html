@@ -7,128 +7,154 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-body {
-  background: linear-gradient(135deg, #0a0a0a, #1a0129);
-  color: white;
-  overflow-x: hidden;
+body{
+  background: radial-gradient(circle at top, #140021, #050505);
+  color:white;
+  overflow-x:hidden;
 }
 
-/* NAVBAR */
-nav {
-  position: fixed;
-  width: 100%;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
+/* PARTICULAS */
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
 }
 
-nav h2 {
-  color: #a855f7;
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:15px 40px;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
+  z-index:1000;
 }
 
-nav a {
-  color: white;
-  margin-left: 20px;
-  text-decoration: none;
-  transition: 0.3s;
+nav h2{
+  color:#a855f7;
+  text-shadow:0 0 10px #a855f7;
 }
 
-nav a:hover {
-  color: #a855f7;
+nav a{
+  color:white;
+  margin-left:20px;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#a855f7;
 }
 
 /* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 1.5s ease;
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
-.hero img {
-  width: 180px;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 0 20px #a855f7);
+.hero img{
+  width:200px;
+  animation:float 3s infinite;
+  filter:drop-shadow(0 0 20px #a855f7);
 }
 
-.hero h1 {
-  font-size: 60px;
-  color: #a855f7;
-  text-shadow: 0 0 20px #a855f7;
+.hero h1{
+  font-size:65px;
+  color:#a855f7;
+  text-shadow:0 0 30px #a855f7;
 }
 
-.hero p {
-  opacity: 0.8;
+.hero p{
+  opacity:0.8;
+  margin-top:10px;
 }
 
 /* BOTONES */
-.buttons {
-  margin-top: 25px;
+.buttons{
+  margin-top:25px;
 }
 
-.btn {
-  padding: 12px 22px;
-  margin: 10px;
-  border-radius: 10px;
-  border: 1px solid #a855f7;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+.btn{
+  padding:12px 25px;
+  margin:10px;
+  border-radius:12px;
+  border:1px solid #a855f7;
+  background:transparent;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-.btn:hover {
-  background: #a855f7;
-  box-shadow: 0 0 15px #a855f7;
+.btn:hover{
+  background:#a855f7;
+  box-shadow:0 0 20px #a855f7;
+}
+
+/* STATS */
+.stats{
+  margin-top:25px;
+  display:flex;
+  gap:20px;
+}
+
+.stat{
+  padding:10px 15px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid #a855f7;
 }
 
 /* SECCIONES */
-section {
-  padding: 80px 20px;
-  max-width: 900px;
-  margin: auto;
-  animation: fadeUp 1s ease;
+section{
+  padding:90px 20px;
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.6s;
 }
 
-section h2 {
-  color: #a855f7;
-  margin-bottom: 20px;
+section.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
-section p {
-  line-height: 1.6;
-  opacity: 0.85;
+section h2{
+  color:#a855f7;
+  margin-bottom:20px;
+}
+
+section p{
+  opacity:0.85;
+  line-height:1.6;
 }
 
 /* ANIMACIONES */
-@keyframes fadeIn {
-  from {opacity:0; transform: translateY(20px);}
-  to {opacity:1; transform: translateY(0);}
+@keyframes float{
+  50%{transform:translateY(-12px);}
 }
-
-@keyframes fadeUp {
-  from {opacity:0; transform: translateY(40px);}
-  to {opacity:1; transform: translateY(0);}
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
+<div id="particles-js"></div>
+
 <nav>
   <h2>05-STAR</h2>
   <div>
@@ -138,11 +164,12 @@ section p {
   </div>
 </nav>
 
-<!-- INICIO -->
 <div class="hero">
+
   <img src="up.png">
+
   <h1>05-STAR</h1>
-  <p>Comunidad Gaming & Desarrollo Digital</p>
+  <p>Gaming • Comunidad • Nivel Profesional</p>
 
   <div class="buttons">
     <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
@@ -153,38 +180,82 @@ section p {
       <i class="fab fa-whatsapp"></i> WhatsApp
     </a>
   </div>
+
+  <!-- ESTILO STREAMER -->
+  <div class="stats">
+    <div class="stat">🟢 Online: <span id="online">--</span></div>
+    <div class="stat">👥 Comunidad: Activa</div>
+  </div>
+
 </div>
 
-<!-- EMPRESA -->
 <section id="empresa">
   <h2>Empresa</h2>
   <p>
-    05-STAR es una comunidad enfocada en el crecimiento dentro del mundo gaming,
-    la creación de contenido y el desarrollo digital. Nuestro objetivo es construir
-    un espacio donde los jugadores puedan conectarse, colaborar y evolucionar
-    hacia un nivel más profesional.
+    05-STAR es una comunidad digital enfocada en gaming competitivo,
+    creación de contenido y crecimiento profesional. Nuestra visión
+    es desarrollar un entorno donde cada miembro evolucione hacia
+    un nivel superior dentro del ecosistema digital.
   </p>
 </section>
 
-<!-- LEYENDA -->
 <section id="leyenda">
   <h2>Leyenda</h2>
   <p>
-    No somos solo un grupo, somos una identidad. 05-STAR nace con la visión
-    de destacar, competir y dejar huella en cada proyecto. Cada miembro representa
-    disciplina, habilidad y mentalidad de alto nivel dentro del entorno gaming.
+    Más que un grupo, somos una identidad. 05-STAR representa disciplina,
+    constancia y alto rendimiento. Cada integrante forma parte de una
+    cultura enfocada en destacar dentro del mundo gaming.
   </p>
 </section>
 
-<!-- MODO DIOS -->
 <section id="modo">
   <h2>Modo Dios</h2>
   <p>
-    El Modo Dios representa el máximo nivel dentro de la comunidad. Es la evolución
-    del jugador promedio hacia un perfil competitivo, estratégico y dominante.
-    Aquí no se juega por jugar, se juega para ganar y construir reputación.
+    El nivel máximo. Aquí se alcanza el dominio total: estrategia,
+    habilidad y mentalidad competitiva. No se trata solo de jugar,
+    se trata de sobresalir.
   </p>
 </section>
+
+<!-- SCRIPTS -->
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+<script>
+// PARTICULAS PRO
+particlesJS("particles-js", {
+  particles:{
+    number:{value:80},
+    color:{value:"#a855f7"},
+    size:{value:3},
+    move:{speed:2},
+    line_linked:{enable:true, color:"#a855f7"}
+  }
+});
+
+// ANIMACION SCROLL
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", ()=>{
+  sections.forEach(sec=>{
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("visible");
+    }
+  });
+});
+
+// FAKE CONTADOR (SI QUIERES REAL TE LO HAGO)
+let online = document.getElementById("online");
+let count = 15;
+
+setInterval(()=>{
+  count += Math.floor(Math.random()*3 - 1);
+  if(count < 10) count = 10;
+  online.innerText = count;
+},2000);
+
+</script>
 
 </body>
 </html>
