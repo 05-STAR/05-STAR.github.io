@@ -7,86 +7,115 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
 
 body{
-  background: linear-gradient(135deg, #0a0a0a, #1a0129);
+  background:#0a0a0a;
   color:white;
-  text-align:center;
-  overflow-x:hidden;
+  transition:0.3s;
 }
 
-/* FONDO ICONOS */
-.bg-icons i{
-  position:fixed;
-  color:rgba(255,255,255,0.05);
-  font-size:30px;
-  animation:move 20s linear infinite;
+/* MODO CLARO */
+body.light{
+  background:#f5f5f5;
+  color:black;
 }
 
-@keyframes move{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
-}
-
-/* NAV */
+/* NAVBAR */
 nav{
-  padding:20px;
-  background:rgba(0,0,0,0.4);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+}
+
+nav img{
+  width:60px;
+}
+
+nav button{
+  background:none;
+  border:1px solid #a855f7;
+  color:white;
+  padding:5px 10px;
+  cursor:pointer;
 }
 
 /* HERO */
 .hero{
   padding:80px 20px;
-}
-
-.logo{
-  width:200px;
-  margin-bottom:20px;
-  filter:drop-shadow(0 0 20px #a855f7);
+  max-width:900px;
+  margin:auto;
 }
 
 h1{
-  font-size:60px;
   color:#a855f7;
-  text-shadow:0 0 20px #a855f7;
 }
 
 .bio{
-  max-width:700px;
-  margin:20px auto;
-  opacity:0.85;
+  margin-top:20px;
   line-height:1.6;
+  opacity:0.85;
+}
+
+/* FONDO LOGOS */
+.bg i{
+  position:fixed;
+  color:rgba(255,255,255,0.04);
+  font-size:50px;
+  animation:float 15s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 
 /* BOTONES */
 .btn{
-  padding:12px 25px;
-  margin:10px;
-  border-radius:10px;
+  margin-top:20px;
+  display:inline-block;
+  padding:10px 20px;
   border:1px solid #a855f7;
-  background:transparent;
   color:white;
   text-decoration:none;
-  transition:0.3s;
 }
 
 .btn:hover{
   background:#a855f7;
-  box-shadow:0 0 15px #a855f7;
 }
 
-/* FOOTER */
+/* VIDEOS */
+.videos{
+  padding:60px 20px;
+  max-width:900px;
+  margin:auto;
+}
+
+iframe{
+  width:100%;
+  height:300px;
+  margin-top:20px;
+  border-radius:10px;
+}
+
+/* SCROLL ANIMACION */
+.hidden{
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.6s;
+}
+
+.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
 footer{
-  margin-top:60px;
+  text-align:center;
   padding:20px;
-  background:rgba(0,0,0,0.5);
-  font-size:14px;
   opacity:0.7;
 }
 </style>
@@ -94,47 +123,64 @@ footer{
 
 <body>
 
-<!-- ICONOS FONDO -->
-<div class="bg-icons">
-  <i class="fas fa-gamepad" style="left:10%; animation-delay:0s;"></i>
-  <i class="fas fa-headset" style="left:30%; animation-delay:5s;"></i>
-  <i class="fas fa-keyboard" style="left:50%; animation-delay:10s;"></i>
-  <i class="fas fa-mouse" style="left:70%; animation-delay:3s;"></i>
-  <i class="fas fa-tv" style="left:85%; animation-delay:8s;"></i>
+<!-- FONDO ICONOS -->
+<div class="bg">
+  <i class="fas fa-gamepad" style="left:10%;"></i>
+  <i class="fas fa-tv" style="left:30%;"></i>
+  <i class="fas fa-keyboard" style="left:60%;"></i>
+  <i class="fas fa-mouse" style="left:80%;"></i>
 </div>
 
 <nav>
-  <h2>05-STAR</h2>
+  <img src="up.png">
+  <button onclick="toggleMode()">🌙 / ☀️</button>
 </nav>
 
-<div class="hero">
-
-  <img src="up.png" class="logo">
-
+<div class="hero hidden">
   <h1>05-STAR</h1>
-
   <p class="bio">
-    05-STAR es una comunidad enfocada en el mundo gaming, la creación de contenido
-    y el desarrollo digital. Nuestro objetivo es construir un espacio donde los
-    jugadores puedan crecer, competir y conectar con otros a un nivel más profesional.
-    Buscamos fomentar la disciplina, la creatividad y la evolución constante dentro
-    del entorno digital.
+    05-STAR es una comunidad enfocada en gaming, creación de contenido y desarrollo digital.
+    Nuestro objetivo es construir un espacio competitivo donde los jugadores evolucionen
+    hacia un nivel más profesional dentro del entorno digital.
   </p>
 
-  <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">
-    <i class="fab fa-discord"></i> Discord
-  </a>
+  <a class="btn" href="https://discord.gg/BfJUbKP4" target="_blank">Discord</a>
+  <a class="btn" href="https://wa.me/573234950793" target="_blank">WhatsApp</a>
+</div>
 
-  <a class="btn" href="https://wa.me/573234950793" target="_blank">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-  </a>
+<div class="videos hidden">
+  <h2>Videos</h2>
 
+  <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+  <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U"></iframe>
 </div>
 
 <footer>
-  Desarrollado por <b>Thirt</b> <br>
-  © 2026 05-STAR. Todos los derechos reservados.
+  Desarrollado por <b>Thirt</b><br>
+  © 2026 05-STAR
 </footer>
+
+<script>
+
+// MODO OSCURO/CLARO
+function toggleMode(){
+  document.body.classList.toggle("light");
+}
+
+// SCROLL ANIMACION
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+document.querySelectorAll(".hidden").forEach(el=>{
+  observer.observe(el);
+});
+
+</script>
 
 </body>
 </html>
